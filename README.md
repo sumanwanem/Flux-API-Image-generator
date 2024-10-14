@@ -1,45 +1,28 @@
-# FLUX.pro Image Generation API with Gradio Interface
+# FLUX.pro Image Generation API with Gradio Interface inside Google Colab enviroment
 
-This project implements a Gradio interface for the FLUX.pro Image Generation API, allowing users to generate images from text prompts.
+This project implements a Gradio interface for the FLUX.pro Image Generation API, allowing users to generate images from text prompts using Google Colab.
 
-## Table of Contents
-- [Installation](#installation)
-- [Usage](#usage)
-- [Features](#features)
-- [Configuration](#configuration)
-- [Error Handling](#error-handling)
-- [Logging](#logging)
-- [Contributing](#contributing)
-- [License](#license)
+## Don't forget to use API KEY get one from https://api.bfl.ml/auth/login#
 
-## Installation
+## Run in Google Colab
 
-To set up this project, follow these steps:
-Install the required packages:
+You can run this project directly in Google Colab without any local setup. Click the button below to open the notebook:
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Y31u6I1Y7MG88VKOZeXdZLa_H4ovtgVl?usp=sharing)
+
+## Usage Instructions
+
+1. Click the "Open in Colab" button above to open the notebook in Google Colab.
+2. In the Colab notebook, go to "Runtime" > "Run all" to execute all cells. This will:
+   - Install the required packages
+   - Set up the environment
+   - Launch the Gradio interface
+3. You will need to set your FLUX API key. Look for the cell that sets the API key and replace the placeholder with your actual key:
+   ```python
+   os.environ["BFL_API_KEY"] = "your-api-key-here"
    ```
-   pip install gradio
-   pip install git+https://github.com/black-forest-labs/flux.git
-   pip install requests Pillow
-   ```
-
-## Usage
-
-To run the application:
-
-1. Set your FLUX API key as an environment variable:
-   ```
-   export BFL_API_KEY="your-api-key-here"
-   Signup and get API KEY from this link https://blackforestlabs.ai/
-   ```
-
-2. Run the Python script:
-   ```
-   python [script_name].py
-   ```
-
-3. Open the Gradio interface in your web browser using the provided URL.
-
-4. Enter a text prompt in the input box and click "Submit" to generate an image.
+4. After running all cells, you'll see a public URL for the Gradio interface. Click on this URL to open the interface in a new tab.
+5. In the Gradio interface, enter a text prompt in the input box and click "Submit" to generate an image.
 
 ## Features
 
@@ -47,41 +30,43 @@ To run the application:
 - User-friendly Gradio interface
 - Error handling and display
 - Request tracking and logging
+- Runs entirely in Google Colab - no local setup required
 
-## Configuration
+## Code Overview
 
-The script uses the following configuration:
+The main components of the Colab notebook are:
 
-- FLUX API Key: Set as an environment variable `BFL_API_KEY`
-- FLUX Model: "flux.1.1-pro"
-- Logging Level: INFO
+1. Package Installation:
+   - Installs `gradio`, `flux`, and other required packages.
 
-## Error Handling
+2. API Setup:
+   - Sets the FLUX API key as an environment variable.
 
-The script includes error handling for:
-- API errors
-- Insufficient credits
-- General exceptions
+3. Image Generation Function:
+   - Defines `generate_image(prompt)` which sends requests to the FLUX API.
 
-Error messages are displayed in the Gradio interface and logged.
+4. Gradio Interface:
+   - Creates a simple UI for entering prompts and displaying generated images.
 
-## Logging
+5. Error Handling:
+   - Manages API errors, insufficient credits, and other exceptions.
 
-The script uses Python's `logging` module to log:
-- Request processing
-- Successful completions
-- Errors
-- Keep-alive messages
+6. Logging:
+   - Tracks requests, completions, and errors for monitoring.
 
-## Contributing
+## Troubleshooting
 
-Contributions to this project are welcome. Please follow these steps:
+- If you encounter an "Insufficient credits" error, check your FLUX API account balance.
+- Ensure you've correctly set your API key in the notebook.
+- If the Gradio interface doesn't appear, try rerunning the cells in the notebook.
 
-1. Fork the repository
-2. Create a new branch
-3. Make your changes and commit them
-4. Push to your fork and submit a pull request
+## License
 
+This project is licensed under the MIT License. This means:
+
+- You are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software.
+- The software is provided "as is", without warranty of any kind, express or implied.
+- The authors or copyright holders are not liable for any claim, damages or other liability arising from the use of the software.
 
 ---
 
